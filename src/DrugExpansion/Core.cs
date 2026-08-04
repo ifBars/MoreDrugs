@@ -16,8 +16,6 @@ public sealed class Core : MelonMod
 
     public override void OnInitializeMelon()
     {
-        HarmonyInstance.PatchAll(typeof(Core).Assembly);
-
         _catalog = new DrugCatalog(LoggerInstance, new IDrugContentModule[]
         {
             new MdmaModule(LoggerInstance),
