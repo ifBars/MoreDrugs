@@ -100,10 +100,12 @@ internal static class ManualTabletPressRuntime
             typeof(S1ObjectScripts.BrickPressHandle),
             nameof(S1ObjectScripts.BrickPressHandle.CurrentPosition));
 
+#if MONOMELON
     private static readonly FieldInfo? CurrentHandlePositionField =
         AccessTools.Field(
             typeof(S1ObjectScripts.BrickPressHandle),
             "<CurrentPosition>k__BackingField");
+#endif
 
     private static ManualTabletPressAsset? _pressAsset;
     private static Func<GameObject>? _pillSourceFactory;
@@ -673,8 +675,10 @@ internal static class ManualTabletPressRuntime
         {
             if (CurrentHandlePositionProperty?.SetMethod != null)
                 CurrentHandlePositionProperty.SetValue(handle, 0f);
+#if MONOMELON
             else
                 CurrentHandlePositionField?.SetValue(handle, 0f);
+#endif
         }
         catch (Exception exception)
         {
