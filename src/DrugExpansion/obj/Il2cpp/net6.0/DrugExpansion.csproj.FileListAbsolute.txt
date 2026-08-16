@@ -1,0 +1,15 @@
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.csproj.AssemblyReference.cache
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.GeneratedMSBuildEditorConfig.editorconfig
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.AssemblyInfoInputs.cache
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.AssemblyInfo.cs
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.csproj.CoreCompileInputs.cache
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion.sourcelink.json
+D:\Modding Things\MoreDrugs\src\DrugExpansion\bin\Il2cpp\net6.0\DrugExpansion_Il2cpp.deps.json
+D:\Modding Things\MoreDrugs\src\DrugExpansion\bin\Il2cpp\net6.0\DrugExpansion_Il2cpp.dll
+D:\Modding Things\MoreDrugs\src\DrugExpansion\bin\Il2cpp\net6.0\DrugExpansion_Il2cpp.pdb
+D:\Modding Things\MoreDrugs\src\DrugExpansion\bin\Il2cpp\net6.0\DrugExpansion_Il2cpp.xml
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion_Il2cpp.dll
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\refint\DrugExpansion_Il2cpp.dll
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion_Il2cpp.xml
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\DrugExpansion_Il2cpp.pdb
+D:\Modding Things\MoreDrugs\src\DrugExpansion\obj\Il2cpp\net6.0\ref\DrugExpansion_Il2cpp.dll

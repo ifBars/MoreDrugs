@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DrugExpansion_Il2cpp</name>
+    </assembly>
+    <members>
+        <member name="T:DrugExpansion.Content.IDrugContentModule">
+            <summary>
+            One independently registered custom drug kind and its products.
+            </summary>
+            <remarks>
+            A module owns its durable IDs, persistence, visuals, packaging, production, and
+            optional mixing strategy. The catalog does not derive capabilities from a vanilla
+            drug enum, so a future entirely custom kind can opt into mixing on its own terms.
+            </remarks>
+        </member>
+        <member name="T:DrugExpansion.Content.Mdma.Production.ManualTabletPressAsset">
+            <summary>
+            Loads the tablet-press visual and exposes its native-aligned mechanical anchors.
+            Station behavior remains authoritative; the GLB animation is reference motion only.
+            </summary>
+        </member>
+        <member name="T:DrugExpansion.Content.Mdma.Production.ManualTabletPressRig">
+            <summary>
+            Named visual assemblies and interaction anchors required by the tablet station.
+            Names deliberately parallel the native Brick Press contract without copying its
+            product conversion behavior.
+            </summary>
+        </member>
+        <member name="T:DrugExpansion.Content.Mdma.Production.ManualTabletPressRuntime">
+            <summary>
+            Adapts the native Brick Press lifecycle for the DrugExpansion tablet press.
+            Inventory and slot replication remain native and authoritative; the authored
+            model and ejected rigidbodies are local presentation.
+            </summary>
+        </member>
+        <member name="T:DrugExpansion.Content.IMixingCapability">
+            <summary>
+            Optional capability implemented by a drug module that participates in mixing.
+            </summary>
+            <remarks>
+            Logical product identity and mixability are intentionally independent. Implementations
+            may use a native execution strategy internally, but must not require the custom kind to
+            masquerade as a built-in Schedule I product family.
+            </remarks>
+        </member>
+    </members>
+</doc>

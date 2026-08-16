@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "9ZKwMfLIXrQ=",
+  "success": true,
+  "projectFilePath": "D:\\Modding Things\\MoreDrugs\\src\\DrugExpansion\\DrugExpansion.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\annas\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.36\\microsoft.windowsdesktop.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\annas\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.36\\microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "C:\\Users\\annas\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.36\\microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512"
+  ],
+  "logs": []
+}

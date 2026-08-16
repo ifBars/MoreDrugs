@@ -80,21 +80,21 @@ internal sealed class MdmaPrecursorCatalog : IDisposable
             MdmaPrecursorIds.SafroleLow,
             "Low-Grade Safrole",
             "A chemical ingredient used in a chemistry station.",
-            Quality.Poor,
+            Quality.Standard,
             MdmaEconomyPolicy.SafroleLowPrice,
             "SafroleLabel_Low");
         RegisterSafrole(
             MdmaPrecursorIds.SafroleStandard,
             "Safrole",
             "A chemical ingredient used in a chemistry station.",
-            Quality.Standard,
+            Quality.Premium,
             MdmaEconomyPolicy.SafroleStandardPrice,
             "SafroleLabel_Standard");
         RegisterSafrole(
             MdmaPrecursorIds.SafroleHigh,
             "High-Grade Safrole",
             "A chemical ingredient used in a chemistry station.",
-            Quality.Premium,
+            Quality.Heavenly,
             MdmaEconomyPolicy.SafroleHighPrice,
             "SafroleLabel_High");
 
