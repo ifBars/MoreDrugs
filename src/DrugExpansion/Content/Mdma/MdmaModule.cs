@@ -18,6 +18,7 @@ using S1Storage = ScheduleOne.Storage;
 #endif
 
 using MelonLoader;
+using DrugExpansion.Content.Mdma.Batch;
 using DrugExpansion.Content.Mdma.Precursors;
 using DrugExpansion.Content.Mdma.Progression;
 using DrugExpansion.Content.Mdma.Production;
@@ -334,12 +335,13 @@ internal sealed class MdmaModule : IDrugContentModule, IMixingCapability
                 .WithPropertyColorMixing()
                 .WithOutputFactoryCompatibility(
                     "ifbars.moredrugs:mixing/mdma",
-                    version: 2)
+                    version: 3)
                 .WithOutputFactory(input =>
                     new ProductMixingOutputDefinition(
                         input.MixName,
                         input.SourceKind,
-                        Math.Min(999f, input.SourcePrice + 10f)))
+                        MdmaMixingPricing.CalculatePrice(
+                            MdmaMixingPriceCapture.ConsumeLastResolvedEffectIds())))
                 .Build();
     }
 

@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <Compile Include="..\..\src\DrugExpansion\Content\Mdma\Batch\*.cs"
-             Exclude="..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaBatchPersistencePatches.cs;..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaBatchRegistry.cs;..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaProductionPatches.cs"
+             Exclude="..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaBatchPersistencePatches.cs;..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaBatchRegistry.cs;..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaProductionPatches.cs;..\..\src\DrugExpansion\Content\Mdma\Batch\MdmaMixingPriceCapture.cs"
              Link="Content\Mdma\Batch\%(Filename)%(Extension)" />
     <Compile Include="..\..\src\DrugExpansion\Content\Mdma\Production\ManualTabletPressEjection.cs"
              Link="Content\Mdma\Production\ManualTabletPressEjection.cs" />
@@ -28,6 +28,8 @@
              Link="Content\Mdma\Production\ManualTabletPressQuantities.cs" />
     <Compile Include="..\..\src\DrugExpansion\Content\Mdma\MdmaEconomyPolicy.cs"
              Link="Content\Mdma\MdmaEconomyPolicy.cs" />
+    <Compile Include="..\..\src\DrugExpansion\Content\Mdma\MdmaMixingPricing.cs"
+             Link="Content\Mdma\MdmaMixingPricing.cs" />
     <Compile Include="..\..\src\DrugExpansion\Content\Mdma\Precursors\MdmaPrecursorIds.cs"
              Link="Content\Mdma\Precursors\MdmaPrecursorIds.cs" />
     <Compile Include="..\..\src\DrugExpansion\Content\Mdma\Precursors\DiscoDaveyRelationshipDefaults.cs"
