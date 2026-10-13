@@ -104,9 +104,9 @@ public sealed class DiscoDavey : NPC
                 .WithDeliveryItem(MdmaPrecursorIds.SafroleHigh)
                 .WithDeliveryItem(MdmaPrecursorIds.Methylamine)
                 .WithRecommendationMessage(
-                    "My friend Disco Davey can hook you up with <h1>safrole</h> and <h1>methylamine</h>. I've passed your number on to him.")
+                    "My friend Disco Davey can hook you up with safrole and methylamine. I've passed your number on to him.")
                 .WithUnlockHint(
-                    "You can now order <h1>safrole</h> and <h1>methylamine</h> from <h1>Disco Davey</h>. They're the main precursor ingredients for <h1>MDMA</h>."))
+                    "You can now order safrole and methylamine from Disco Davey. They're the main precursor ingredients for MDMA."))
             .WithRelationshipDefaults(relationship => relationship
                 .WithDelta(
                     DiscoDaveyRelationshipDefaults.InitialRelationshipDelta)

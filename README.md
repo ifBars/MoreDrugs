@@ -26,6 +26,8 @@ drug type.
   customers Herbert Bleuball and Tobias Wentworth. Davey is recommended after
   enough successful deals build either relationship, naturally placing him
   after Uptown opens at Baron I.
+  All four precursors become purchasable once Davey is unlocked, without
+  additional ingredient rank requirements.
   He sells low-, standard-, and high-grade Safrole plus Methylamine through the
   native supplier flow. Davey remains hidden while idle and appears only at a
   player-requested supplier meeting, matching base-game suppliers. His native

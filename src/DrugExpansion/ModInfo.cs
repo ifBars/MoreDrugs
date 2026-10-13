@@ -3,7 +3,7 @@ namespace DrugExpansion;
 internal static class ModInfo
 {
     internal const string Name = "DrugExpansion";
-    internal const string Version = "1.0.3";
+    internal const string Version = "1.0.4";
     internal const string Author = "Bars";
     internal const string OwnerId = "ifbars.moredrugs";
     internal const string GameDeveloper = "TVGS";
