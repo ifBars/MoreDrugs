@@ -112,6 +112,7 @@ internal sealed class MdmaPrecursorCatalog : IDisposable
                     "Methylamine",
                     "A common chemical ingredient used in a chemistry station.",
                     ItemCategory.Ingredient)
+                .WithRequiredRank(null)
                 .WithStackLimit(20)
                 .WithPricing(
                     MdmaEconomyPolicy.MethylaminePrice,
@@ -195,6 +196,7 @@ internal sealed class MdmaPrecursorCatalog : IDisposable
                     name,
                     description,
                     ItemCategory.Ingredient)
+                .WithRequiredRank(null)
                 .WithStackLimit(20)
                 .WithPricing(price, 0.25f)
                 .WithLegalStatus(LegalStatus.Illegal)

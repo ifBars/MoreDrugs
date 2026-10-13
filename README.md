@@ -26,6 +26,8 @@ drug type.
   customers Herbert Bleuball and Tobias Wentworth. Davey is recommended after
   enough successful deals build either relationship, naturally placing him
   after Uptown opens at Baron I.
+  All four precursors become purchasable once Davey is unlocked, without
+  additional ingredient rank requirements.
   He sells low-, standard-, and high-grade Safrole plus Methylamine through the
   native supplier flow. Davey remains hidden while idle and appears only at a
   player-requested supplier meeting, matching base-game suppliers. His native
@@ -59,7 +61,7 @@ simply to become mixable.
 ## Build
 
 For Schedule I **0.4.7f12**, use matching Mono/IL2CPP **S1API 3.2.1** DLLs and
-S1MAPI dependencies. Launch the updated IL2CPP game with MelonLoader once before
+S1MAPI **2.0.1** dependencies. Launch the updated IL2CPP game with MelonLoader once before
 building to regenerate its wrappers; older cached wrappers can still compile
 while referencing members removed from the installed game.
 
@@ -73,7 +75,9 @@ dotnet build .\src\DrugExpansion\DrugExpansion.csproj -c Il2cpp
 ```
 
 Install the matching DrugExpansion DLL in the game `Mods` directory. Install the
-matching S1API and S1MAPI builds as dependencies. All multiplayer peers need the
+matching S1API and S1MAPI builds as dependencies. S1MAPI 2.0.1 belongs in
+`UserLibs`; older versions can leave precursor registration incomplete and show
+native fallback icons. All multiplayer peers need the
 same mod and assets.
 
 For a quick manual test, the S1API console aliases are:
