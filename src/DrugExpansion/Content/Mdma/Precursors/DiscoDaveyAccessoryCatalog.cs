@@ -285,7 +285,8 @@ internal sealed class DiscoDaveyAccessoryCatalog : IDisposable
         var composites = new Dictionary<Texture, Texture2D>();
         foreach (Renderer renderer in
                  clone.GetComponentsInChildren<Renderer>(true).Concat(
-                     PrepareAvatarObjectVisuals(accessory).GetComponentsInChildren<Renderer>(true)))
+                     PrepareAvatarObjectVisuals(accessory, cloneMaterials: false)
+                         .GetComponentsInChildren<Renderer>(true)))
         {
             Material[] sourceMaterials = renderer.sharedMaterials;
             if (sourceMaterials.Length == 0)
@@ -660,13 +661,17 @@ internal sealed class DiscoDaveyAccessoryCatalog : IDisposable
         return clone;
     }
 
-    private GameObject PrepareAvatarObjectVisuals(S1AvatarFramework.Accessory accessory)
+    private GameObject PrepareAvatarObjectVisuals(
+        S1AvatarFramework.Accessory accessory,
+        bool cloneMaterials = true)
     {
         var avatarObject = accessory.AvatarObjectEquivalent ??
             throw new InvalidOperationException("The accessory has no AvatarObject equivalent.");
         DiscoDaveyAvatarObjects.OwnAttachments(avatarObject);
         foreach (Renderer renderer in avatarObject.GetComponentsInChildren<Renderer>(true))
         {
+            if (!cloneMaterials)
+                continue;
             Material[] materials = renderer.sharedMaterials;
             for (int index = 0; index < materials.Length; index++)
             {

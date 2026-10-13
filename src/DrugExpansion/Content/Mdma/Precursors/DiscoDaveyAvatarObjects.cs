@@ -20,19 +20,22 @@ internal static class DiscoDaveyAvatarObjects
         var sources = (S1Avatar.AvatarAttachment[])AccessTools.Field(
             typeof(S1Avatar.AvatarObject), "_attachments").GetValue(avatarObject);
 #endif
-        var owned = new S1Avatar.AvatarAttachment[sources.Length];
+        var owned = new List<S1Avatar.AvatarAttachment>(sources.Length);
         for (int index = 0; index < sources.Length; index++)
         {
             var source = sources[index];
+            if (source == null)
+                continue;
             if (source.transform.IsChildOf(avatarObject.transform))
             {
-                owned[index] = source;
+                owned.Add(source);
                 continue;
             }
 
-            owned[index] = UnityEngine.Object.Instantiate(source, avatarObject.transform, false);
+            owned.Add(UnityEngine.Object.Instantiate(source, avatarObject.transform, false));
         }
-        SetAttachments(avatarObject, owned);
+        // Native AvatarObject.Initialize dereferences every entry, so omit invalid references.
+        SetAttachments(avatarObject, owned.ToArray());
     }
 
     internal static Transform ReplaceWithRigidAttachment(
