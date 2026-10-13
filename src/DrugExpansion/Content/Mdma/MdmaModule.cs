@@ -153,7 +153,10 @@ internal sealed class MdmaModule : IDrugContentModule, IMixingCapability
                     ItemCategory.Equipment)
                 .WithBuildSound(S1API.Items.Buildable.BuildSoundType.Metal)
                 .WithPricing(MdmaEconomyPolicy.TabletPressPrice, 0.5f)
-                .WithRequiredRank(ContentUnlockRank);
+                .WithRequiredRank(ContentUnlockRank)
+                .WithGhostVisual(
+                    ManualTabletPressRuntime.CreateGhostVisual,
+                    replaceExistingVisual: true);
         if (_tabletPressIcon != null)
         {
             tabletPressBuilder.WithIcon(_tabletPressIcon);

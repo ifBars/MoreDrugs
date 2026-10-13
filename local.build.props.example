@@ -8,10 +8,10 @@
     <Il2CppAssembliesPath>$(Il2CppGamePath)\MelonLoader\Il2CppAssemblies</Il2CppAssembliesPath>
     <Il2CppMelonLoaderPath>$(Il2CppGamePath)\MelonLoader\net6</Il2CppMelonLoaderPath>
 
-    <S1ApiMonoPath>..\S1API\S1API\bin\MonoMelon\netstandard2.1\S1API.dll</S1ApiMonoPath>
-    <S1ApiIl2CppPath>..\S1API\S1API\bin\Il2CppMelon\net6.0\S1API.dll</S1ApiIl2CppPath>
-    <MApiMonoPath>..\MAPI\bin\Mono\netstandard2.1\S1MAPI_Mono.dll</MApiMonoPath>
-    <MApiIl2CppPath>..\MAPI\bin\Il2cpp\net6.0\S1MAPI_Il2cpp.dll</MApiIl2CppPath>
+    <S1ApiMonoPath>$(MSBuildThisFileDirectory)..\S1API\S1API\bin\MonoMelon\netstandard2.1\S1API.dll</S1ApiMonoPath>
+    <S1ApiIl2CppPath>$(MSBuildThisFileDirectory)..\S1API\S1API\bin\Il2CppMelon\net6.0\S1API.dll</S1ApiIl2CppPath>
+    <MApiMonoPath>$(MSBuildThisFileDirectory)..\MAPI\bin\Mono\netstandard2.1\S1MAPI_Mono.dll</MApiMonoPath>
+    <MApiIl2CppPath>$(MSBuildThisFileDirectory)..\MAPI\bin\Il2cpp\net6.0\S1MAPI_Il2cpp.dll</MApiIl2CppPath>
   </PropertyGroup>
 </Project>
 

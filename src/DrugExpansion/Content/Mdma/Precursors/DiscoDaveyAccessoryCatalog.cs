@@ -1,8 +1,10 @@
 #if IL2CPPMELON
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using S1AvatarFramework = Il2CppScheduleOne.AvatarFramework;
+using S1CoreAvatar = Il2CppScheduleOne.Core.Avatar;
 #elif MONOMELON
 using S1AvatarFramework = ScheduleOne.AvatarFramework;
+using S1CoreAvatar = ScheduleOne.Core.Avatar;
 #endif
 
 using MelonLoader;
@@ -180,6 +182,10 @@ internal sealed class DiscoDaveyAccessoryCatalog : IDisposable
             accessory.AssetPath = RaveJacketPath;
             accessory.ColorAllMeshes = false;
             ClearAccessoryColorTargets(accessory);
+            ApplyTemplateOverlay(
+                PrepareAvatarObjectVisuals(accessory),
+                overlay,
+                "DiscoDavey_RaveJacket_Native");
             foreach (Renderer renderer in
                      jacket.GetComponentsInChildren<Renderer>(true))
             {
@@ -278,7 +284,9 @@ internal sealed class DiscoDaveyAccessoryCatalog : IDisposable
 
         var composites = new Dictionary<Texture, Texture2D>();
         foreach (Renderer renderer in
-                 clone.GetComponentsInChildren<Renderer>(true))
+                 clone.GetComponentsInChildren<Renderer>(true).Concat(
+                     PrepareAvatarObjectVisuals(accessory, cloneMaterials: false)
+                         .GetComponentsInChildren<Renderer>(true)))
         {
             Material[] sourceMaterials = renderer.sharedMaterials;
             if (sourceMaterials.Length == 0)
@@ -634,8 +642,51 @@ internal sealed class DiscoDaveyAccessoryCatalog : IDisposable
         accessory.ShouldBlockHair = false;
         accessory.ColorAllMeshes = false;
         SetAccessoryRendererArrays(accessory, customRenderers);
+        var avatarObject = accessory.AvatarObjectEquivalent ??
+            throw new InvalidOperationException("The sling-bag scaffold has no AvatarObject equivalent.");
+        Transform attachmentRoot = DiscoDaveyAvatarObjects.ReplaceWithRigidAttachment(
+            avatarObject,
+            AvatarHipHeight);
+        foreach (RigidMeshSpec spec in meshes)
+        {
+            MeshRenderer renderer = CreateRigidRenderer(
+                attachmentRoot,
+                visualSource.transform,
+                FindSourceMesh(visualSource, spec.MeshName));
+            // Native attachments preserve world scale when anchoring; the authored GLB is in meters.
+            renderer.transform.localScale = Vector3.one;
+            renderer.transform.localPosition = Vector3.zero;
+        }
         clone.SetActive(true);
         return clone;
+    }
+
+    private GameObject PrepareAvatarObjectVisuals(
+        S1AvatarFramework.Accessory accessory,
+        bool cloneMaterials = true)
+    {
+        var avatarObject = accessory.AvatarObjectEquivalent ??
+            throw new InvalidOperationException("The accessory has no AvatarObject equivalent.");
+        DiscoDaveyAvatarObjects.OwnAttachments(avatarObject);
+        foreach (Renderer renderer in avatarObject.GetComponentsInChildren<Renderer>(true))
+        {
+            if (!cloneMaterials)
+                continue;
+            Material[] materials = renderer.sharedMaterials;
+            for (int index = 0; index < materials.Length; index++)
+            {
+                if (materials[index] == null)
+                    continue;
+                materials[index] = new Material(materials[index]);
+                _ownedMaterials.Add(materials[index]);
+            }
+            renderer.sharedMaterials = materials;
+        }
+        // Preserve the authored recolors instead of the native outfit's generic color property.
+        foreach (var applicator in avatarObject.GetComponentsInChildren<
+                     S1CoreAvatar.AttachmentColorApplicator>(true))
+            applicator.enabled = false;
+        return avatarObject.gameObject;
     }
 
     private static SkinnedMeshRenderer FindTemplateRenderer(
