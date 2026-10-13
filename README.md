@@ -58,6 +58,11 @@ simply to become mixable.
 
 ## Build
 
+For Schedule I **0.4.7f12**, use matching Mono/IL2CPP **S1API 3.2.1** DLLs and
+S1MAPI dependencies. Launch the updated IL2CPP game with MelonLoader once before
+building to regenerate its wrappers; older cached wrappers can still compile
+while referencing members removed from the installed game.
+
 1. Copy `local.build.props.example` to `local.build.props`.
 2. Update the local game, S1API, and MAPI assembly paths.
 3. Build both runtimes:

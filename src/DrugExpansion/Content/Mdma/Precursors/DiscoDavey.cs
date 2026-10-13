@@ -91,11 +91,8 @@ public sealed class DiscoDavey : NPC
                 appearance.WithAccessoryLayer<Chest>(
                     DiscoDaveyAccessoryCatalog.FestivalSlingBagPath,
                     Color.white);
-
-                appearance.WithImpostor("Benji");
             })
             .WithSpawnPosition(HiddenSpawnPosition)
-            .EnsureSupplier()
             .WithSupplierDefaults(supplier => supplier
                 .WithPersistentId(MdmaPrecursorIds.DiscoDaveyPersistentId)
                 .WithOrderLimits(

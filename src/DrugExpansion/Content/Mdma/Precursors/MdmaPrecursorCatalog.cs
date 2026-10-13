@@ -18,6 +18,7 @@ using S1Storage = ScheduleOne.Storage;
 using S1Trash = ScheduleOne.Trash;
 #endif
 
+using HarmonyLib;
 using MelonLoader;
 using DrugExpansion.Infrastructure;
 using S1API.Console;
@@ -38,6 +39,11 @@ internal sealed class MdmaPrecursorCatalog : IDisposable
         "DrugExpansion.Assets.Models.methylamine.glb";
     private static readonly Color ClearPrecursorLiquidColor =
         new(0.94f, 0.97f, 1f, 0.45f);
+#if MONOMELON
+    private static readonly System.Reflection.FieldInfo TrashIdField =
+        AccessTools.Field(typeof(S1Trash.TrashItem), "Id") ??
+        throw new MissingFieldException(typeof(S1Trash.TrashItem).FullName, "Id");
+#endif
 
     private readonly MelonLogger.Instance _logger;
     private readonly EmbeddedGlbAsset _safrole =
@@ -463,7 +469,11 @@ internal sealed class MdmaPrecursorCatalog : IDisposable
         S1Trash.TrashItem trash =
             UnityEngine.Object.Instantiate(template);
         string trashId = $"{itemId}_empty";
-        trash.ID = trashId;
+#if IL2CPPMELON
+        trash.Id = trashId;
+#else
+        TrashIdField.SetValue(trash, trashId);
+#endif
         PreparePrefab(trash.gameObject, $"{Sanitize(itemId)}_Trash");
 
         GameObject visual = ReplaceNativeVisual(

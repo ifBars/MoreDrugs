@@ -1,7 +1,5 @@
 #if IL2CPPMELON
 using S1 = Il2CppScheduleOne;
-using S1Building = Il2CppScheduleOne.Building;
-using S1EntityFramework = Il2CppScheduleOne.EntityFramework;
 using S1FunctionalProductList =
     Il2CppSystem.Collections.Generic.List<
         Il2CppScheduleOne.Product.FunctionalProduct>;
@@ -16,8 +14,6 @@ using S1UIStations = Il2CppScheduleOne.UI.Stations;
 using TmpText = Il2CppTMPro.TextMeshProUGUI;
 #elif MONOMELON
 using S1 = ScheduleOne;
-using S1Building = ScheduleOne.Building;
-using S1EntityFramework = ScheduleOne.EntityFramework;
 using S1FunctionalProductList =
     System.Collections.Generic.List<ScheduleOne.Product.FunctionalProduct>;
 using S1ItemFramework = ScheduleOne.ItemFramework;
@@ -154,14 +150,6 @@ internal static class ManualTabletPressRuntime
             MdmaModule.TabletPressItemId,
             StringComparison.OrdinalIgnoreCase);
 
-    internal static bool IsTabletPressDefinition(
-        S1ItemFramework.BuildableItemDefinition? definition) =>
-        definition != null &&
-        string.Equals(
-            definition.ID,
-            MdmaModule.TabletPressItemId,
-            StringComparison.OrdinalIgnoreCase);
-
     internal static void Attach(S1ObjectScripts.BrickPress press)
     {
         int pressKey = press.GetInstanceID();
@@ -195,28 +183,16 @@ internal static class ManualTabletPressRuntime
         }
     }
 
-    internal static void AttachGhost(
-        S1EntityFramework.GridItem ghost,
-        S1ItemFramework.BuildableItemDefinition definition)
+    internal static GameObject CreateGhostVisual(Transform parent)
     {
-        if (!IsTabletPressDefinition(definition) || _pressAsset == null)
-            return;
+        ManualTabletPressAsset pressAsset = _pressAsset ??
+            throw new InvalidOperationException(
+                "The Manual Tablet Press asset is not configured.");
 
-        if (ghost.transform.Find("DrugExpansion_ManualTabletPress") != null)
-            return;
-
-        try
-        {
-            HideNativeRenderers(ghost.gameObject);
-            ManualTabletPressRig rig = _pressAsset.CreateInstance(ghost.transform);
-            DisableReferenceAnimation(rig.Root);
-            DisableReferenceProcessVisuals(rig.Root);
-        }
-        catch (Exception exception)
-        {
-            _logger?.Error(
-                $"Failed to create the Manual Tablet Press placement ghost: {exception}");
-        }
+        ManualTabletPressRig rig = pressAsset.CreateInstance(parent);
+        DisableReferenceAnimation(rig.Root);
+        DisableReferenceProcessVisuals(rig.Root);
+        return rig.Root;
     }
 
     internal static void Tick(S1ObjectScripts.BrickPress press)
@@ -551,12 +527,6 @@ internal static class ManualTabletPressRuntime
         S1Management.IConfigurable? configurable) =>
         configurable as S1ObjectScripts.BrickPress;
 #endif
-
-    private static void HideNativeRenderers(GameObject root)
-    {
-        foreach (Renderer renderer in root.GetComponentsInChildren<Renderer>(true))
-            renderer.enabled = false;
-    }
 
     private static void DisableReferenceAnimation(GameObject root)
     {
@@ -1098,17 +1068,6 @@ internal static class ManualTabletPressRuntime
         }
     }
 
-    [HarmonyPatch(typeof(S1Building.BuildStart_Grid), "CreateGhostModel")]
-    private static class CreateGhostModelPatch
-    {
-        private static void Postfix(
-            S1ItemFramework.BuildableItemDefinition itemDefinition,
-            S1EntityFramework.GridItem __result)
-        {
-            if (__result != null)
-                AttachGhost(__result, itemDefinition);
-        }
-    }
 }
 
 internal sealed class ManualTabletPressInstance
